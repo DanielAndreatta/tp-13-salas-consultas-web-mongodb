@@ -1,0 +1,25 @@
+<section class="estado">
+    <h1>Confirmar eliminación</h1>
+    <p>Vas a eliminar esta reserva de forma permanente:</p>
+
+    <h2>Estudiante: <%= reserva.estudiante %>
+    </h2>
+    <p>Sala: <%= reserva.sala %> | Fecha: <%= reserva.fecha %> | Turno: <%= reserva.turno %>
+    </p>
+    <p>ID: <%= reserva.id %>
+    </p>
+    <p>Esta acción no se puede deshacer desde la aplicación.</p>
+
+    <% if (error) { %>
+        <p class="error" role="alert">
+            <%= error %>
+        </p>
+        <% } %>
+
+            <form action="/reservas/<%= reserva.id %>/eliminar" method="post">
+                <!-- Campo oculto requerido por el controlador -->
+                <input type="hidden" name="confirmar" value="si">
+                <button type="submit" style="background-color: #d9534f;">Confirmar eliminación</button>
+                <a href="/reservas/<%= reserva.id %>">Cancelar y conservar</a>
+            </form>
+</section>
